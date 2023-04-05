@@ -73,6 +73,11 @@ namespace SparkyNUnitTest
             Assert.That(() => customer.GreetAndCombineNames("", "Gebrehiwot"),
                 Throws.ArgumentException.With.Message.EqualTo("Empty First Name"));
 
+            Assert.Throws<ArgumentException>(() => customer.GreetAndCombineNames("", "Gebrehiwot"));
+
+            Assert.That(() => customer.GreetAndCombineNames("", "Gebrehiwot"),
+                Throws.ArgumentException);
+
         }
     }
 }
