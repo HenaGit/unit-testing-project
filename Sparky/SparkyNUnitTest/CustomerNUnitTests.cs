@@ -28,12 +28,16 @@ namespace SparkyNUnitTest
 
             //Assert
             //Assert.That(customer.GreetMessage, Is.EqualTo("Hello, Henok Gebrehiwot"));
-            Assert.AreEqual(customer.GreetMessage, "Hello, Henok Gebrehiwot");
-            Assert.That(customer.GreetMessage, Is.EqualTo("Hello, Henok Gebrehiwot"));
-            Assert.That(customer.GreetMessage, Does.Contain("Henok Gebrehiwot").IgnoreCase);
-            Assert.That(customer.GreetMessage, Does.StartWith("Hello,"));
-            Assert.That(customer.GreetMessage, Does.EndWith("Gebrehiwot"));
-            Assert.That(customer.GreetMessage, Does.Match("Hello, [A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+"));
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(customer.GreetMessage, "Hello, Henok Gebrehiwot");
+                Assert.That(customer.GreetMessage, Is.EqualTo("Hello, Henok Gebrehiwot"));
+                Assert.That(customer.GreetMessage, Does.Contain("Henok Gebrehiwot").IgnoreCase);
+                Assert.That(customer.GreetMessage, Does.StartWith("Hello,"));
+                Assert.That(customer.GreetMessage, Does.EndWith("Gebrehiwot"));
+                Assert.That(customer.GreetMessage, Does.Match("Hello, [A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+"));
+            });
+           
         }
         [Test]
         public void GreetMessage_NotGreeted_ReturnsNull()
