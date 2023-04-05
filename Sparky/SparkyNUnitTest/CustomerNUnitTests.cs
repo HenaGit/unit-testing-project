@@ -21,7 +21,13 @@ namespace SparkyNUnitTest
             string fullName = customer.GreetAndCombineNames("Henok", "Gebrehiwot");
 
             //Assert
+            //Assert.That(fullName, Is.EqualTo("Hello, Henok Gebrehiwot"));
+            Assert.AreEqual(fullName, "Hello, Henok Gebrehiwot");
             Assert.That(fullName, Is.EqualTo("Hello, Henok Gebrehiwot"));
+            Assert.That(fullName, Does.Contain("Henok Gebrehiwot").IgnoreCase);
+            Assert.That(fullName, Does.StartWith("Hello,"));
+            Assert.That(fullName, Does.EndWith("Gebrehiwot"));
+            Assert.That(fullName, Does.Match("Hello, [A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+"));
         }
     }
 }
