@@ -29,5 +29,16 @@ namespace SparkyNUnitTest
             Assert.That(fullName, Does.EndWith("Gebrehiwot"));
             Assert.That(fullName, Does.Match("Hello, [A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+"));
         }
+        [Test]
+        public void GreetMessage_NotGreeted_ReturnsNull()
+        {
+            //arrange
+            var customer = new Customer();
+
+            //act
+
+            //assert
+            Assert.IsNull(customer.GreetMessage);
+        }
     }
 }
