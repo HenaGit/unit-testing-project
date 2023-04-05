@@ -56,5 +56,23 @@ namespace SparkyNUnitTest
             int result = customer.Discount;
             Assert.That(result, Is.InRange(10, 25));
         }
+        [Test]
+        public void GreetMessage_GreetedWithoutLastName_ReturnsNotNull()
+        {
+            customer.GreetAndCombineNames("Henok", "");
+
+            Assert.IsNotNull(customer.GreetMessage);
+            Assert.IsFalse(string.IsNullOrEmpty(customer.GreetMessage));
+        }
+        [Test]
+        public void GreetChecker_EmptyFirstName_ThrowsException()
+        {
+            var exceptionDetails = Assert.Throws<ArgumentException>(() => customer.GreetAndCombineNames("", "Gebrehiwot"));
+            Assert.AreEqual("Empty First Name", exceptionDetails.Message);
+
+            Assert.That(() => customer.GreetAndCombineNames("", "Gebrehiwot"),
+                Throws.ArgumentException.With.Message.EqualTo("Empty First Name"));
+
+        }
     }
 }
