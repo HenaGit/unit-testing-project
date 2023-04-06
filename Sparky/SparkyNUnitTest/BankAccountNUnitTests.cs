@@ -15,7 +15,7 @@ namespace SparkyNUnitTest
         [SetUp]
         public void Steup()
         {
-            bankAccount = new(new LogBook());
+            bankAccount = new(new LogFakker());
         }
         [Test]
         public void BankDeposit_Add100_ReturnTrue()
