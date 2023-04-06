@@ -6,15 +6,18 @@ using System.Threading.Tasks;
 
 namespace Sparky
 {
-    internal class BankAccount
+    public class BankAccount
     {
         public int balance { get; set; }
-        public BankAccount()
+        private readonly ILogBook _logBook;
+        public BankAccount(ILogBook logBook)
         {
             balance = 0;
+            _logBook = logBook;
         }
         public bool Deposit(int amount)
         {
+            _logBook.Message("Deposit invoked");
             balance += amount;
             return true;
         }
