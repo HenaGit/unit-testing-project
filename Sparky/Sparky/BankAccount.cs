@@ -29,7 +29,7 @@ namespace Sparky
                 balance -= amount;
                 return _logBook.LogBalanceAfterWithdrawal(balance);
             }
-            return _logBook.LogBalanceAfterWithdrawal(balance);
+            return _logBook.LogBalanceAfterWithdrawal(balance-amount);
         }
         public int GetBalance() { return balance; }
     }
