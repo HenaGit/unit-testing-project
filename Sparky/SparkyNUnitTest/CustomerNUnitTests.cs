@@ -79,5 +79,19 @@ namespace SparkyNUnitTest
                 Throws.ArgumentException);
 
         }
+        [Test]
+        public void CustomerType_CreateCustomerWithLessThan100Order_ReturnBasicCustomer()
+        {
+            customer.OrderTotal = 10;
+            var result = customer.GetCustomerDetails();
+            Assert.That(result, Is.TypeOf<BasicCustomer>());
+        }
+        [Test]
+        public void CustomerType_CreateCustomerWithMoreThan100Order_ReturnPlatiniumCustomer()
+        {
+            customer.OrderTotal = 110;
+            var result = customer.GetCustomerDetails();
+            Assert.That(result, Is.TypeOf<PlatinumCustomer>());
+        }
     }
 }
