@@ -11,6 +11,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SparkyNUnitTest", "SparkyNU
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkyXUnit", "SparkyXUnit\SparkyXUnit.csproj", "{21F5C421-43B4-4293-BF2C-2F85358AEC0F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basic Foundation", "Basic Foundation", "{6CDD08F0-5351-4FAC-A380-EB1C0E58EE70}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BongoWeb", "BongoWeb", "{8535D2B2-4541-4F58-8FE4-C4B7FAB9683F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bongo.Models", "Bongo.Models\Bongo.Models.csproj", "{AAEBBE64-19E7-4156-A16F-375229FA5693}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +39,20 @@ Global
 		{21F5C421-43B4-4293-BF2C-2F85358AEC0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21F5C421-43B4-4293-BF2C-2F85358AEC0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21F5C421-43B4-4293-BF2C-2F85358AEC0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAEBBE64-19E7-4156-A16F-375229FA5693}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAEBBE64-19E7-4156-A16F-375229FA5693}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAEBBE64-19E7-4156-A16F-375229FA5693}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAEBBE64-19E7-4156-A16F-375229FA5693}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BB04199D-3463-4841-83B5-8A707485B833} = {6CDD08F0-5351-4FAC-A380-EB1C0E58EE70}
+		{B3CC127C-C376-433B-99A1-9934FB92E8B8} = {6CDD08F0-5351-4FAC-A380-EB1C0E58EE70}
+		{9EE13AE0-CF7B-4F81-AA2F-B4DCC934A960} = {6CDD08F0-5351-4FAC-A380-EB1C0E58EE70}
+		{21F5C421-43B4-4293-BF2C-2F85358AEC0F} = {6CDD08F0-5351-4FAC-A380-EB1C0E58EE70}
+		{AAEBBE64-19E7-4156-A16F-375229FA5693} = {8535D2B2-4541-4F58-8FE4-C4B7FAB9683F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DAA4B7AB-3F69-4463-8963-8600D7334412}
