@@ -14,4 +14,9 @@
     <PackageReference Include="NUnit3TestAdapter" Version="4.4.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Bongo.Core\Bongo.Core.csproj" />
+    <ProjectReference Include="..\Bongo.Web\Bongo.Web.csproj" />
+  </ItemGroup>
+
 </Project>
