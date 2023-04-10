@@ -16,6 +16,7 @@ namespace Bongo.DataAccess.Tests
     {
         private StudyRoomBooking studyRoomBooking_One;
         private StudyRoomBooking studyRoomBooking_Two;
+        private DbContextOptions<ApplicationDbContext> options;
         public StudyRoomBookingRepositoryTests()
         {
             studyRoomBooking_One = new StudyRoomBooking()
@@ -38,42 +39,49 @@ namespace Bongo.DataAccess.Tests
                 StudyRoomId = 2
             };
         }
+        [SetUp]
+        public void Setup()
+        {
+            options = new DbContextOptionsBuilder<ApplicationDbContext>()
+               .UseInMemoryDatabase(databaseName: "temp_Bongo").Options;
+        }
         [Test]
+        [Order(1)]
         public void SaveBooking_Booking_One_CheckTheValuesFromDatabase()
         {
             //arrange
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase(databaseName: "temp_Bongo").Options;
+           
 
             //act
             using (var context = new ApplicationDbContext(options))
             {
                 var repository = new StudyRoomBookingRepository(context);
-                repository.Book(studyRoomBooking_Two);
+                repository.Book(studyRoomBooking_One);
             }
 
             //assert
             using (var context = new ApplicationDbContext(options))
             {
-                var bookingFromDb = context.StudyRoomBookings.FirstOrDefault(u => u.BookingId == 22);
-                Assert.AreEqual(studyRoomBooking_Two.BookingId, bookingFromDb.BookingId);
-                Assert.AreEqual(studyRoomBooking_Two.FirstName, bookingFromDb.FirstName);
-                Assert.AreEqual(studyRoomBooking_Two.LastName, bookingFromDb.LastName);
-                Assert.AreEqual(studyRoomBooking_Two.Email, bookingFromDb.Email);
-                Assert.AreEqual(studyRoomBooking_Two.Date, bookingFromDb.Date);
+                var bookingFromDb = context.StudyRoomBookings.FirstOrDefault(u => u.BookingId == 11);
+                Assert.AreEqual(studyRoomBooking_One.BookingId, bookingFromDb.BookingId);
+                Assert.AreEqual(studyRoomBooking_One.FirstName, bookingFromDb.FirstName);
+                Assert.AreEqual(studyRoomBooking_One.LastName, bookingFromDb.LastName);
+                Assert.AreEqual(studyRoomBooking_One.Email, bookingFromDb.Email);
+                Assert.AreEqual(studyRoomBooking_One.Date, bookingFromDb.Date);
             }
         }
         [Test]
+        [Order(2)]
         public void GetAllBooking_BookingOneAdnTwo_CheckBoththeBookingFromDatabase()
         {
             //arrange
             var expectedResult = new List<StudyRoomBooking> { studyRoomBooking_One, studyRoomBooking_Two };
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase(databaseName: "temp_Bongo").Options;
+            
 
 
             using (var context = new ApplicationDbContext(options))
             {
+                context.Database.EnsureDeleted();
                 var repository = new StudyRoomBookingRepository(context);
                 repository.Book(studyRoomBooking_One);
                 repository.Book(studyRoomBooking_Two);
