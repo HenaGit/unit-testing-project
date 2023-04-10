@@ -19,7 +19,12 @@ namespace Bongo.Models.Tests
             DateInFutureAttribute dateInFutureAttribute = new(() => DateTime.Now);
 
             return dateInFutureAttribute.IsValid(DateTime.Now.AddSeconds(addTime));
-
+        }
+        [Test]
+        public void DateValidator_NotValidDate_ReturnErrorMessage()
+        {
+            var result = new DateInFutureAttribute();
+            Assert.AreEqual("Date must be in the future", result.ErrorMessage);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Bongo.Models.ModelValidations
             ErrorMessage = "Date must be in the future";
         }
 
-        public override bool IsValid(object value)
+        public override bool IsValid(object? value)
         {
             bool isValid = false;
 
