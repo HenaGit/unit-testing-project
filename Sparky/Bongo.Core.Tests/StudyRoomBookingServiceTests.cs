@@ -59,5 +59,28 @@ namespace Bongo.Core.Tests
             //Assert.AreEqual("Value cannot be null. (Parameter 'request')", exception.Message);    
             Assert.AreEqual("request", exception.ParamName);
         }
+        [Test]
+        public void StudyRoomBooking_SaveBookingWithAvailableRoom_ReturnsResultWithAllValues()
+        {
+            StudyRoomBooking savedStudyRoomBooking = null;
+            _studyRoomBookingRepoMock.Setup(x => x.Book(It.IsAny<StudyRoomBooking>()))
+                .Callback<StudyRoomBooking>(booking =>
+                {
+                    savedStudyRoomBooking = booking;
+                });
+
+            //act
+            _bookingService.BookStudyRoom(_request);
+
+            //assert
+            _studyRoomBookingRepoMock.Verify(x => x.Book(It.IsAny<StudyRoomBooking>()), Times.Once);
+
+            Assert.NotNull(savedStudyRoomBooking);
+            Assert.AreEqual(_request.FirstName, savedStudyRoomBooking.FirstName);
+            Assert.AreEqual(_request.LastName, savedStudyRoomBooking.LastName);
+            Assert.AreEqual(_request.Email, savedStudyRoomBooking.Email);
+            Assert.AreEqual(_request.Date, savedStudyRoomBooking.Date);
+            Assert.AreEqual(_availableStudyRoom.First().Id, savedStudyRoomBooking.StudyRoomId);
+        }
     }
 }
